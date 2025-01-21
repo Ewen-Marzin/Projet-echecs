@@ -96,14 +96,39 @@ while running:
     ## Cavaliers
     pg.draw.polygon(
         screen,
+        white,
+        [
+            (positions["KnW1"][1] * 80 + 20, positions["KnW1"][0] * 80 + 20),
+            (positions["KnW1"][1] * 80 + 20, positions["KnW1"][0] * 80 + 60),
+            (positions["KnW1"][1] * 80 + 40, positions["KnW1"][0] * 80 + 60),
+            (positions["KnW1"][1] * 80 + 40, positions["KnW1"][0] * 80 + 40),
+            (positions["KnW1"][1] * 80 + 60, positions["KnW1"][0] * 80 + 40),
+            (positions["KnW1"][1] * 80 + 60, positions["KnW1"][0] * 80 + 20),
+        ],
+    )
+
+    pg.draw.polygon(
+        screen,
+        white,
+        [
+            (positions["KnW2"][1] * 80 + 20, positions["KnW2"][0] * 80 + 20),
+            (positions["KnW2"][1] * 80 + 20, positions["KnW2"][0] * 80 + 60),
+            (positions["KnW2"][1] * 80 + 40, positions["KnW2"][0] * 80 + 60),
+            (positions["KnW2"][1] * 80 + 40, positions["KnW2"][0] * 80 + 40),
+            (positions["KnW2"][1] * 80 + 60, positions["KnW2"][0] * 80 + 40),
+            (positions["KnW2"][1] * 80 + 60, positions["KnW2"][0] * 80 + 20),
+        ],
+    )
+    pg.draw.polygon(
+        screen,
         black,
         [
             (positions["KnB1"][1] * 80 + 20, positions["KnB1"][0] * 80 + 20),
             (positions["KnB1"][1] * 80 + 20, positions["KnB1"][0] * 80 + 60),
-            (positions["KnB1"][1] * 80 + 60, positions["KnB1"][0] * 80 + 60),
-            (positions["KnB1"][1] * 80 + 60, positions["KnB1"][0] * 80 + 40),
+            (positions["KnB1"][1] * 80 + 40, positions["KnB1"][0] * 80 + 60),
             (positions["KnB1"][1] * 80 + 40, positions["KnB1"][0] * 80 + 40),
-            (positions["KnB1"][1] * 80 + 40, positions["KnB1"][0] * 80 + 20),
+            (positions["KnB1"][1] * 80 + 60, positions["KnB1"][0] * 80 + 40),
+            (positions["KnB1"][1] * 80 + 60, positions["KnB1"][0] * 80 + 20),
         ],
     )
     pg.draw.polygon(
@@ -112,34 +137,22 @@ while running:
         [
             (positions["KnB2"][1] * 80 + 20, positions["KnB2"][0] * 80 + 20),
             (positions["KnB2"][1] * 80 + 20, positions["KnB2"][0] * 80 + 60),
-            (positions["KnB2"][1] * 80 + 60, positions["KnB2"][0] * 80 + 60),
-            (positions["KnB2"][1] * 80 + 60, positions["KnB2"][0] * 80 + 40),
+            (positions["KnB2"][1] * 80 + 40, positions["KnB2"][0] * 80 + 60),
             (positions["KnB2"][1] * 80 + 40, positions["KnB2"][0] * 80 + 40),
-            (positions["KnB2"][1] * 80 + 40, positions["KnB2"][0] * 80 + 20),
+            (positions["KnB2"][1] * 80 + 60, positions["KnB2"][0] * 80 + 40),
+            (positions["KnB2"][1] * 80 + 60, positions["KnB2"][0] * 80 + 20),
         ],
     )
+
+    ## Reines
     pg.draw.polygon(
         screen,
         white,
         [
-            (positions["KnW1"][1] * 80 + 20, positions["KnW1"][0] * 80 + 20),
-            (positions["KnW1"][1] * 80 + 20, positions["KnW1"][0] * 80 + 60),
-            (positions["KnW1"][1] * 80 + 60, positions["KnW1"][0] * 80 + 60),
-            (positions["KnW1"][1] * 80 + 60, positions["KnW1"][0] * 80 + 40),
-            (positions["KnW1"][1] * 80 + 40, positions["KnW1"][0] * 80 + 40),
-            (positions["KnW1"][1] * 80 + 40, positions["KnW1"][0] * 80 + 20),
-        ],
-    )
-    pg.draw.polygon(
-        screen,
-        white,
-        [
-            (positions["KnW2"][1] * 80 + 20, positions["KnW2"][0] * 80 + 20),
-            (positions["KnW2"][1] * 80 + 20, positions["KnW2"][0] * 80 + 60),
-            (positions["KnW2"][1] * 80 + 60, positions["KnW2"][0] * 80 + 60),
-            (positions["KnW2"][1] * 80 + 60, positions["KnW2"][0] * 80 + 40),
-            (positions["KnW2"][1] * 80 + 40, positions["KnW2"][0] * 80 + 40),
-            (positions["KnW2"][1] * 80 + 40, positions["KnW2"][0] * 80 + 20),
+            (positions["QW"][1] * 80 + 20, positions["QW"][0] * 80 + 40),
+            (positions["QW"][1] * 80 + 40, positions["QW"][0] * 80 + 20),
+            (positions["QW"][1] * 80 + 60, positions["QW"][0] * 80 + 40),
+            (positions["QW"][1] * 80 + 40, positions["QW"][0] * 80 + 60),
         ],
     )
     pg.display.update()
