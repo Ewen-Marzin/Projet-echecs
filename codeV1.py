@@ -2,13 +2,13 @@ import pygame as pg
 import random as rd
 
 pg.init()
-width = 75
-height = 75
+width = 80
+height = 80
 size = 8
 screen = pg.display.set_mode((width * size, height * size))
 running = True
 clock = pg.time.Clock()
-dico = {
+positions = {
     "RW1": (7, 0),
     "KnW1": (7, 1),
     "BW1": (7, 2),
@@ -42,20 +42,14 @@ dico = {
     "PB7": (1, 6),
     "PB8": (1, 7),
 }
+black = (0, 0, 0)
+white = (255, 255, 255)
 while running:
     clock.tick(10)
     for event in pg.event.get():
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_q:
                 running = False
-            elif event.key == pg.K_RIGHT and direction != (-1, 0):
-                direction = (1, 0)
-            elif event.key == pg.K_LEFT and direction != (1, 0):
-                direction = (-1, 0)
-            elif event.key == pg.K_UP and direction != (0, 1):
-                direction = (0, -1)
-            elif event.key == pg.K_DOWN and direction != (0, -1):
-                direction = (0, 1)
         elif event.type == pg.QUIT:
             running = False
     screen.fill((255, 255, 255))
@@ -71,4 +65,81 @@ while running:
                 col = (169, 149, 123)
                 pg.draw.rect(screen, col, rect)
 
+    ### Dessin des tours
+    rect = pg.Rect(positions["RW1"][1] * 80 + 20, positions["RW1"][0] * 80 + 20, 40, 40)
+    col = (255, 255, 255)
+    pg.draw.rect(screen, col, rect)
+    rect = pg.Rect(positions["RW2"][1] * 80 + 20, positions["RW2"][0] * 80 + 20, 40, 40)
+    col = (255, 255, 255)
+    pg.draw.rect(screen, col, rect)
+    rect = pg.Rect(positions["RB1"][1] * 80 + 20, positions["RB1"][0] * 80 + 20, 40, 40)
+    col = (0, 0, 0)
+    pg.draw.rect(screen, col, rect)
+    rect = pg.Rect(positions["RB2"][1] * 80 + 20, positions["RB2"][0] * 80 + 20, 40, 40)
+    col = (0, 0, 0)
+    pg.draw.rect(screen, col, rect)
+
+    ### Fous
+    rect = pg.Rect(positions["BW1"][1] * 80 + 30, positions["BW1"][0] * 80 + 10, 20, 60)
+    col = (255, 255, 255)
+    pg.draw.rect(screen, col, rect)
+    rect = pg.Rect(positions["BW2"][1] * 80 + 30, positions["BW2"][0] * 80 + 10, 20, 60)
+    col = (255, 255, 255)
+    pg.draw.rect(screen, col, rect)
+    rect = pg.Rect(positions["BB1"][1] * 80 + 30, positions["BB1"][0] * 80 + 10, 20, 60)
+    col = (0, 0, 0)
+    pg.draw.rect(screen, col, rect)
+    rect = pg.Rect(positions["BB2"][1] * 80 + 30, positions["BB2"][0] * 80 + 10, 20, 60)
+    col = (0, 0, 0)
+    pg.draw.rect(screen, col, rect)
+
+    ## Cavaliers
+    pg.draw.polygon(
+        screen,
+        black,
+        [
+            (positions["KnB1"][1] * 80 + 20, positions["KnB1"][0] * 80 + 20),
+            (positions["KnB1"][1] * 80 + 20, positions["KnB1"][0] * 80 + 60),
+            (positions["KnB1"][1] * 80 + 60, positions["KnB1"][0] * 80 + 60),
+            (positions["KnB1"][1] * 80 + 60, positions["KnB1"][0] * 80 + 40),
+            (positions["KnB1"][1] * 80 + 40, positions["KnB1"][0] * 80 + 40),
+            (positions["KnB1"][1] * 80 + 40, positions["KnB1"][0] * 80 + 20),
+        ],
+    )
+    pg.draw.polygon(
+        screen,
+        black,
+        [
+            (positions["KnB2"][1] * 80 + 20, positions["KnB2"][0] * 80 + 20),
+            (positions["KnB2"][1] * 80 + 20, positions["KnB2"][0] * 80 + 60),
+            (positions["KnB2"][1] * 80 + 60, positions["KnB2"][0] * 80 + 60),
+            (positions["KnB2"][1] * 80 + 60, positions["KnB2"][0] * 80 + 40),
+            (positions["KnB2"][1] * 80 + 40, positions["KnB2"][0] * 80 + 40),
+            (positions["KnB2"][1] * 80 + 40, positions["KnB2"][0] * 80 + 20),
+        ],
+    )
+    pg.draw.polygon(
+        screen,
+        white,
+        [
+            (positions["KnW1"][1] * 80 + 20, positions["KnW1"][0] * 80 + 20),
+            (positions["KnW1"][1] * 80 + 20, positions["KnW1"][0] * 80 + 60),
+            (positions["KnW1"][1] * 80 + 60, positions["KnW1"][0] * 80 + 60),
+            (positions["KnW1"][1] * 80 + 60, positions["KnW1"][0] * 80 + 40),
+            (positions["KnW1"][1] * 80 + 40, positions["KnW1"][0] * 80 + 40),
+            (positions["KnW1"][1] * 80 + 40, positions["KnW1"][0] * 80 + 20),
+        ],
+    )
+    pg.draw.polygon(
+        screen,
+        white,
+        [
+            (positions["KnW2"][1] * 80 + 20, positions["KnW2"][0] * 80 + 20),
+            (positions["KnW2"][1] * 80 + 20, positions["KnW2"][0] * 80 + 60),
+            (positions["KnW2"][1] * 80 + 60, positions["KnW2"][0] * 80 + 60),
+            (positions["KnW2"][1] * 80 + 60, positions["KnW2"][0] * 80 + 40),
+            (positions["KnW2"][1] * 80 + 40, positions["KnW2"][0] * 80 + 40),
+            (positions["KnW2"][1] * 80 + 40, positions["KnW2"][0] * 80 + 20),
+        ],
+    )
     pg.display.update()
