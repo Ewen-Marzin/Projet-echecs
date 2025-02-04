@@ -155,4 +155,150 @@ while running:
             (positions["QW"][1] * 80 + 40, positions["QW"][0] * 80 + 60),
         ],
     )
+    pg.draw.polygon(
+        screen,
+        black,
+        [
+            (positions["QB"][1] * 80 + 20, positions["QB"][0] * 80 + 40),
+            (positions["QB"][1] * 80 + 40, positions["QB"][0] * 80 + 20),
+            (positions["QB"][1] * 80 + 60, positions["QB"][0] * 80 + 40),
+            (positions["QB"][1] * 80 + 40, positions["QB"][0] * 80 + 60),
+        ],
+    )
+
+    ##Rois
+    pg.draw.polygon(
+        screen,
+        white,
+        [
+            (positions["KW"][1] * 80 + 30, positions["KW"][0] * 80 + 10),
+            (positions["KW"][1] * 80 + 50, positions["KW"][0] * 80 + 10),
+            (positions["KW"][1] * 80 + 50, positions["KW"][0] * 80 + 30),
+            (positions["KW"][1] * 80 + 70, positions["KW"][0] * 80 + 30),
+            (positions["KW"][1] * 80 + 70, positions["KW"][0] * 80 + 50),
+            (positions["KW"][1] * 80 + 50, positions["KW"][0] * 80 + 50),
+            (positions["KW"][1] * 80 + 50, positions["KW"][0] * 80 + 70),
+            (positions["KW"][1] * 80 + 30, positions["KW"][0] * 80 + 70),
+            (positions["KW"][1] * 80 + 30, positions["KW"][0] * 80 + 50),
+            (positions["KW"][1] * 80 + 10, positions["KW"][0] * 80 + 50),
+            (positions["KW"][1] * 80 + 10, positions["KW"][0] * 80 + 30),
+            (positions["KW"][1] * 80 + 30, positions["KW"][0] * 80 + 30),
+        ],
+    )
+    pg.draw.polygon(
+        screen,
+        black,
+        [
+            (positions["KB"][1] * 80 + 30, positions["KB"][0] * 80 + 10),
+            (positions["KB"][1] * 80 + 50, positions["KB"][0] * 80 + 10),
+            (positions["KB"][1] * 80 + 50, positions["KB"][0] * 80 + 30),
+            (positions["KB"][1] * 80 + 70, positions["KB"][0] * 80 + 30),
+            (positions["KB"][1] * 80 + 70, positions["KB"][0] * 80 + 50),
+            (positions["KB"][1] * 80 + 50, positions["KB"][0] * 80 + 50),
+            (positions["KB"][1] * 80 + 50, positions["KB"][0] * 80 + 70),
+            (positions["KB"][1] * 80 + 30, positions["KB"][0] * 80 + 70),
+            (positions["KB"][1] * 80 + 30, positions["KB"][0] * 80 + 50),
+            (positions["KB"][1] * 80 + 10, positions["KB"][0] * 80 + 50),
+            (positions["KB"][1] * 80 + 10, positions["KB"][0] * 80 + 30),
+            (positions["KB"][1] * 80 + 30, positions["KB"][0] * 80 + 30),
+        ],
+    )
+
+    ##Pions
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB1"][1] * 80 + 40, positions["PB1"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB2"][1] * 80 + 40, positions["PB2"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB3"][1] * 80 + 40, positions["PB3"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB4"][1] * 80 + 40, positions["PB4"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB5"][1] * 80 + 40, positions["PB5"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB6"][1] * 80 + 40, positions["PB6"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB7"][1] * 80 + 40, positions["PB7"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        black,
+        (positions["PB8"][1] * 80 + 40, positions["PB8"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW1"][1] * 80 + 40, positions["PW1"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW2"][1] * 80 + 40, positions["PW2"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW3"][1] * 80 + 40, positions["PW3"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW4"][1] * 80 + 40, positions["PW4"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW5"][1] * 80 + 40, positions["PW5"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW6"][1] * 80 + 40, positions["PW6"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW7"][1] * 80 + 40, positions["PW7"][0] * 80 + 40),
+        15,
+    )
+    pg.draw.circle(
+        screen,
+        white,
+        (positions["PW8"][1] * 80 + 40, positions["PW8"][0] * 80 + 40),
+        15,
+    )
     pg.display.update()
