@@ -5,12 +5,13 @@ pg.init()
 width = 80
 height = 80
 size = 8
-screen = pg.display.set_mode((width * size, height * size))
+ecran = pg.display.set_mode((width * size, height * size))
 running = True
 clock = pg.time.Clock()
 
 black = (0, 0, 0)
 white = (255, 255, 255)
+screen = [[None for i in range(8)] for j in range(8)]
 
 
 class Piece:
@@ -257,6 +258,41 @@ BW2 = Bishop("white", 5, 7)
 QW = Queen("white", 3, 7)
 KW = King("white", 4, 7)
 
+Pieces = [
+    PB1,
+    PB2,
+    PB3,
+    PB4,
+    PB5,
+    PB6,
+    PB7,
+    PB8,
+    RB1,
+    RB2,
+    KB1,
+    KB2,
+    BB1,
+    BB2,
+    QB,
+    KB,
+    PW1,
+    PW2,
+    PW3,
+    PW4,
+    PW5,
+    PW6,
+    PW7,
+    PW8,
+    RW1,
+    RW2,
+    KW1,
+    KW2,
+    BW1,
+    BW2,
+    QW,
+    KW,
+]
+
 
 def mouvement(Piece, start, end, screen):
     if Piece.coup_valide():
@@ -273,33 +309,34 @@ def affichage(screen):
         for j in range(8):
             if (i + j) % 2 == 0:
                 col = (91, 60, 17)
-                pg.draw.rect(screen, col, (i * size, j * size, size, size))
+                pg.draw.rect(ecran, col, (i * size, j * size, size, size))
             else:
-                pg.draw.rect(screen, black, (i * size, j * size, size, size))
+                col = (169, 149, 123)
+                pg.draw.rect(ecran, col, (i * size, j * size, size, size))
             if screen[i][j] != None:
                 if screen[i][j] == "PB1":
-                    pg.draw.circle(screen, black, (PB1.x + 40, PB1.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB1.x + 40, PB1.y + 40), 15)
                 elif screen[i][j] == "PB2":
-                    pg.draw.circle(screen, black, (PB2.x + 40, PB2.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB2.x + 40, PB2.y + 40), 15)
                 elif screen[i][j] == "PB3":
-                    pg.draw.circle(screen, black, (PB3.x + 40, PB3.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB3.x + 40, PB3.y + 40), 15)
                 elif screen[i][j] == "PB4":
-                    pg.draw.circle(screen, black, (PB4.x + 40, PB4.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB4.x + 40, PB4.y + 40), 15)
                 elif screen[i][j] == "PB5":
-                    pg.draw.circle(screen, black, (PB5.x + 40, PB5.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB5.x + 40, PB5.y + 40), 15)
                 elif screen[i][j] == "PB6":
-                    pg.draw.circle(screen, black, (PB6.x + 40, PB6.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB6.x + 40, PB6.y + 40), 15)
                 elif screen[i][j] == "PB7":
-                    pg.draw.circle(screen, black, (PB7.x + 40, PB7.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB7.x + 40, PB7.y + 40), 15)
                 elif screen[i][j] == "PB8":
-                    pg.draw.circle(screen, black, (PB8.x + 40, PB8.y + 40), 15)
+                    pg.draw.circle(ecran, black, (PB8.x + 40, PB8.y + 40), 15)
                 elif screen[i][j] == "RB1":
-                    pg.draw.rect(screen, black, (RB1.x, RB1.y, width, height))
+                    pg.draw.rect(ecran, black, (RB1.x, RB1.y, width, height))
                 elif screen[i][j] == "RB2":
-                    pg.draw.rect(screen, black, (RB2.x, RB2.y, width, height))
+                    pg.draw.rect(ecran, black, (RB2.x, RB2.y, width, height))
                 elif screen[i][j] == "KB1":
                     pg.draw.polygon(
-                        screen,
+                        ecran,
                         black,
                         [
                             (KB1.x + 20, KB1.y + 20),
@@ -312,7 +349,7 @@ def affichage(screen):
                     )
                 elif screen[i][j] == "KB2":
                     pg.draw.polygon(
-                        screen,
+                        ecran,
                         black,
                         [
                             (KB2.x + 20, KB2.y + 20),
@@ -324,12 +361,12 @@ def affichage(screen):
                         ],
                     )
                 elif screen[i][j] == "BB1":
-                    pg.draw.rect(screen, black, pg.Rect(BB1.x + 30, BB1.y + 10, 20, 60))
+                    pg.draw.rect(ecran, black, pg.Rect(BB1.x + 30, BB1.y + 10, 20, 60))
                 elif screen[i][j] == "BB2":
-                    pg.draw.rect(screen, black, pg.Rect(BB2.x + 30, BB2.y + 10, 20, 60))
+                    pg.draw.rect(ecran, black, pg.Rect(BB2.x + 30, BB2.y + 10, 20, 60))
                 elif screen[i][j] == "QB":
                     pg.draw.polygon(
-                        screen,
+                        ecran,
                         black,
                         [
                             (QB.x + 20, QB.y + 40),
@@ -340,7 +377,7 @@ def affichage(screen):
                     )
                 elif screen[i][j] == "KB":
                     pg.draw.polygon(
-                        screen,
+                        ecran,
                         black,
                         [
                             (KB.x + 30, KB.y + 10),
@@ -360,29 +397,29 @@ def affichage(screen):
                     )
 
                 if screen[i][j] == "PW1":
-                    pg.draw.circle(screen, black, (PW1.x + 40, PW1.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW1.x + 40, PW1.y + 40), 15)
                 elif screen[i][j] == "PW2":
-                    pg.draw.circle(screen, black, (PW2.x + 40, PW2.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW2.x + 40, PW2.y + 40), 15)
                 elif screen[i][j] == "PW3":
-                    pg.draw.circle(screen, black, (PW3.x + 40, PW3.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW3.x + 40, PW3.y + 40), 15)
                 elif screen[i][j] == "PW4":
-                    pg.draw.circle(screen, black, (PW4.x + 40, PW4.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW4.x + 40, PW4.y + 40), 15)
                 elif screen[i][j] == "PW5":
-                    pg.draw.circle(screen, black, (PW5.x + 40, PW5.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW5.x + 40, PW5.y + 40), 15)
                 elif screen[i][j] == "PW6":
-                    pg.draw.circle(screen, black, (PW6.x + 40, PW6.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW6.x + 40, PW6.y + 40), 15)
                 elif screen[i][j] == "PW7":
-                    pg.draw.circle(screen, black, (PW7.x + 40, PW7.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW7.x + 40, PW7.y + 40), 15)
                 elif screen[i][j] == "PW8":
-                    pg.draw.circle(screen, black, (PW8.x + 40, PW8.y + 40), 15)
+                    pg.draw.circle(ecran, white, (PW8.x + 40, PW8.y + 40), 15)
                 elif screen[i][j] == "RW1":
-                    pg.draw.rect(screen, black, (RW1.x, RW1.y, width, height))
+                    pg.draw.rect(ecran, white, (RW1.x, RW1.y, width, height))
                 elif screen[i][j] == "RW2":
-                    pg.draw.rect(screen, black, (RW2.x, RW2.y, width, height))
+                    pg.draw.rect(ecran, white, (RW2.x, RW2.y, width, height))
                 elif screen[i][j] == "KW1":
                     pg.draw.polygon(
-                        screen,
-                        black,
+                        ecran,
+                        white,
                         [
                             (KW1.x + 20, KW1.y + 20),
                             (KW1.x + 20, KW1.y + 60),
@@ -394,8 +431,8 @@ def affichage(screen):
                     )
                 elif screen[i][j] == "KW2":
                     pg.draw.polygon(
-                        screen,
-                        black,
+                        ecran,
+                        white,
                         [
                             (KW2.x + 20, KW2.y + 20),
                             (KW2.x + 20, KW2.y + 60),
@@ -406,13 +443,13 @@ def affichage(screen):
                         ],
                     )
                 elif screen[i][j] == "BW1":
-                    pg.draw.rect(screen, black, pg.Rect(BW1.x + 30, BW1.y + 10, 20, 60))
+                    pg.draw.rect(ecran, white, pg.Rect(BW1.x + 30, BW1.y + 10, 20, 60))
                 elif screen[i][j] == "BW2":
-                    pg.draw.rect(screen, black, pg.Rect(BW2.x + 30, BW2.y + 10, 20, 60))
+                    pg.draw.rect(ecran, white, pg.Rect(BW2.x + 30, BW2.y + 10, 20, 60))
                 elif screen[i][j] == "QW":
                     pg.draw.polygon(
-                        screen,
-                        black,
+                        ecran,
+                        white,
                         [
                             (QW.x + 20, QB.y + 40),
                             (QW.x + 40, QW.y + 20),
@@ -422,8 +459,8 @@ def affichage(screen):
                     )
                 elif screen[i][j] == "KW":
                     pg.draw.polygon(
-                        screen,
-                        black,
+                        ecran,
+                        white,
                         [
                             (KW.x + 30, KB.y + 10),
                             (KW.x + 50, KW.y + 10),
@@ -450,4 +487,10 @@ while running:
                 running = False
         elif event.type == pg.QUIT:
             running = False
-    screen.fill((255, 255, 255))
+    ecran.fill((255, 255, 255))
+    for i in range(8):
+        for j in range(8):
+            for piece in Pieces:
+                if piece.x == i * width and piece.y == j * height:
+                    screen[i][j] = piece
+    affichage(screen)
