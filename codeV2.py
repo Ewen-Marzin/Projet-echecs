@@ -30,26 +30,26 @@ class Pawn(Piece):
             if (
                 start[0] == end[0]
                 and start[1] + 1 == end[1]
-                and screen[end[0]][end[1]] == None
+                and screen[end[0]][end[1]] is None
             ):
                 return True
             elif (
                 start[0] == end[0]
                 and start[1] + 2 == end[1]
                 and start[1] == 1
-                and screen[end[0]][end[1]] == None
+                and screen[end[0]][end[1]] is None
             ):
                 return True
             elif (
                 start[0] + 1 == end[0]
                 and start[1] + 1 == end[1]
-                and screen[end[0]][end[1]] != None
+                and screen[end[0]][end[1]] is not None
             ):
                 return True
             elif (
                 start[0] - 1 == end[0]
                 and start[1] + 1 == end[1]
-                and screen[end[0]][end[1]] != None
+                and screen[end[0]][end[1]] is not None
             ):
                 return True  ### Les deux derniers cas correspondent au cas où le pion mange une pièce (pas de prise en passant...)
             else:
@@ -58,26 +58,26 @@ class Pawn(Piece):
             if (
                 start[0] == end[0]
                 and start[1] - 1 == end[1]
-                and screen[end[0]][end[1]] == None
+                and screen[end[0]][end[1]] is None
             ):
                 return True
             elif (
                 start[0] == end[0]
                 and start[1] - 2 == end[1]
                 and start[1] == 1
-                and screen[end[0]][end[1]] == None
+                and screen[end[0]][end[1]] is None
             ):
                 return True
             elif (
                 start[0] + 1 == end[0]
                 and start[1] - 1 == end[1]
-                and screen[end[0]][end[1]] != None
+                and screen[end[0]][end[1]] is not None
             ):
                 return True
             elif (
                 start[0] - 1 == end[0]
                 and start[1] - 1 == end[1]
-                and screen[end[0]][end[1]] != None
+                and screen[end[0]][end[1]] is not None
             ):
                 return True  ### Les deux derniers cas correspondent au cas où le pion mange une pièce (pas de prise en passant...)
             else:
@@ -90,26 +90,26 @@ class Rock(Piece):
             if start[1] < end[1]:
                 for i in range(start[1], end[1]):
                     if (
-                        screen[start[0]][i] != None
+                        screen[start[0]][i] is not None
                     ):  ### On vérifie que les cases sur lesquelles se déplacent la tour ne contiennent pas dejà de pièces
                         return False
                 return True
             else:
                 for i in range(end[1], start[1]):
-                    if screen[start[0]][i] != None:
+                    if screen[start[0]][i] is not None:
                         return False
                 return True
         elif start[0] != end[0] and start[1] == end[1]:
             if start[0] < end[0]:
                 for i in range(start[0], end[0]):
                     if (
-                        screen[start[0]][i] != None
+                        screen[start[0]][i] is not None
                     ):  ### On vérifie que les cases sur lesquelles se déplacent la tour ne contiennent pas dejà de pièces
                         return False
                 return True
             else:
                 for i in range(end[0], start[0]):
-                    if screen[start[0]][i] != None:
+                    if screen[start[0]][i] is not None:
                         return False
                 return True
         return False
@@ -125,23 +125,23 @@ class Bishop(Piece):
             ):  ## On différencie les cas possibles de déplacement selon les 4 diagonales (Haut-Droite, Bas-Droite, Haut-Gauche, Bas-Gauche)
                 for i in range(1, abs(start[0] - end[0])):
                     if (
-                        screen[start[0] + i][start[1] + i] != None
+                        screen[start[0] + i][start[1] + i] is not None
                     ):  ## On vérifie qu'on ne rencontre aucune pièce sur le chemin
                         return False
                 return True
             elif start[0] < end[0] and start[1] > end[1]:
                 for i in range(1, abs(start[0] - end[0])):
-                    if screen[start[0] + i][start[1] - i] != None:
+                    if screen[start[0] + i][start[1] - i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] < end[1]:
                 for i in range(1, abs(start[0] - end[0])):
-                    if screen[start[0] - i][start[1] + i] != None:
+                    if screen[start[0] - i][start[1] + i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] > end[1]:
                 for i in range(1, abs(start[0] - end[0])):
-                    if screen[start[0] - i][start[1] - i] != None:
+                    if screen[start[0] - i][start[1] - i] is not None:
                         return False
                 return True
         else:
@@ -176,23 +176,23 @@ class Queen(Piece):
             ):  ## On différencie les cas possibles de déplacement selon les 4 diagonales (Haut-Droite, Bas-Droite, Haut-Gauche, Bas-Gauche)
                 for i in range(1, abs(start[0] - end[0])):
                     if (
-                        screen[start[0] + i][start[1] + i] != None
+                        screen[start[0] + i][start[1] + i] is not None
                     ):  ## On vérifie qu'on ne rencontre aucune pièce sur le chemin
                         return False
                 return True
             elif start[0] < end[0] and start[1] > end[1]:
                 for i in range(1, abs(start[0] - end[0])):
-                    if screen[start[0] + i][start[1] - i] != None:
+                    if screen[start[0] + i][start[1] - i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] < end[1]:
                 for i in range(1, abs(start[0] - end[0])):
-                    if screen[start[0] - i][start[1] + i] != None:
+                    if screen[start[0] - i][start[1] + i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] > end[1]:
                 for i in range(1, abs(start[0] - end[0])):
-                    if screen[start[0] - i][start[1] - i] != None:
+                    if screen[start[0] - i][start[1] - i] is not None:
                         return False
                 return True
         else:
@@ -200,26 +200,26 @@ class Queen(Piece):
                 if start[1] < end[1]:
                     for i in range(start[1], end[1]):
                         if (
-                            screen[start[0]][i] != None
+                            screen[start[0]][i] is not None
                         ):  ### On vérifie que les cases sur lesquelles se déplacent la tour ne contiennent pas dejà de pièces
                             return False
                     return True
                 else:
                     for i in range(end[1], start[1]):
-                        if screen[start[0]][i] != None:
+                        if screen[start[0]][i] is not None:
                             return False
                     return True
             elif start[0] != end[0] and start[1] == end[1]:
                 if start[0] < end[0]:
                     for i in range(start[0], end[0]):
                         if (
-                            screen[start[0]][i] != None
+                            screen[start[0]][i] is not None
                         ):  ### On vérifie que les cases sur lesquelles se déplacent la tour ne contiennent pas dejà de pièces
                             return False
                     return True
                 else:
                     for i in range(end[0], start[0]):
-                        if screen[start[0]][i] != None:
+                        if screen[start[0]][i] is not None:
                             return False
                     return True
         return False
@@ -294,203 +294,124 @@ Pieces = [
 ]
 
 
-def mouvement(Piece, start, end, screen):
-    if Piece.coup_valide():
-        screen[end[0]][end[1]] = screen[start[0]][
-            start[1]
-        ]  ###Normalement si une pièce se trouve en position end[0], end[1], elle est alors supprimée de screen car "mangée" par la pièce qui arrive en cette position
-        screen[start[0]][start[1]] = None
-    else:
-        return "coup illegal"
-
-
 def affichage(screen):
     for i in range(8):
         for j in range(8):
             if (i + j) % 2 == 0:
                 col = (91, 60, 17)
-                pg.draw.rect(ecran, col, (i * size, j * size, size, size))
+                pg.draw.rect(ecran, col, (i * width, j * height, width, height))
             else:
                 col = (169, 149, 123)
-                pg.draw.rect(ecran, col, (i * size, j * size, size, size))
-            if screen[i][j] != None:
-                if screen[i][j] == "PB1":
-                    pg.draw.circle(ecran, black, (PB1.x + 40, PB1.y + 40), 15)
-                elif screen[i][j] == "PB2":
-                    pg.draw.circle(ecran, black, (PB2.x + 40, PB2.y + 40), 15)
-                elif screen[i][j] == "PB3":
-                    pg.draw.circle(ecran, black, (PB3.x + 40, PB3.y + 40), 15)
-                elif screen[i][j] == "PB4":
-                    pg.draw.circle(ecran, black, (PB4.x + 40, PB4.y + 40), 15)
-                elif screen[i][j] == "PB5":
-                    pg.draw.circle(ecran, black, (PB5.x + 40, PB5.y + 40), 15)
-                elif screen[i][j] == "PB6":
-                    pg.draw.circle(ecran, black, (PB6.x + 40, PB6.y + 40), 15)
-                elif screen[i][j] == "PB7":
-                    pg.draw.circle(ecran, black, (PB7.x + 40, PB7.y + 40), 15)
-                elif screen[i][j] == "PB8":
-                    pg.draw.circle(ecran, black, (PB8.x + 40, PB8.y + 40), 15)
-                elif screen[i][j] == "RB1":
-                    pg.draw.rect(ecran, black, (RB1.x, RB1.y, width, height))
-                elif screen[i][j] == "RB2":
-                    pg.draw.rect(ecran, black, (RB2.x, RB2.y, width, height))
-                elif screen[i][j] == "KB1":
+                pg.draw.rect(ecran, col, (i * width, j * height, width, height))
+
+            # Si une pièce est présente dans la case, on la dessine
+            piece = screen[i][j]
+            if piece is not None:
+                if isinstance(piece, Pawn):
+                    if piece.color == "black":
+                        pg.draw.circle(
+                            ecran,
+                            black,
+                            (piece.x + width // 2, piece.y + height // 2),
+                            15,
+                        )
+                    else:
+                        pg.draw.circle(
+                            ecran,
+                            white,
+                            (piece.x + width // 2, piece.y + height // 2),
+                            15,
+                        )
+                elif isinstance(piece, Rock):
+                    pg.draw.rect(
+                        ecran,
+                        black if piece.color == "black" else white,
+                        (piece.x + 20, piece.y + 20, 40, 40),
+                    )
+                elif isinstance(piece, Knight):
                     pg.draw.polygon(
                         ecran,
-                        black,
+                        black if piece.color == "black" else white,
                         [
-                            (KB1.x + 20, KB1.y + 20),
-                            (KB1.x + 20, KB1.y + 60),
-                            (KB1.x + 40, KB1.y + 60),
-                            (KB1.x + 40, KB1.y + 40),
-                            (KB1.x + 60, KB1.y + 40),
-                            (KB1.x + 60, KB1.y + 20),
+                            (piece.x + 20, piece.y + 20),
+                            (piece.x + 20, piece.y + 60),
+                            (piece.x + 40, piece.y + 60),
+                            (piece.x + 40, piece.y + 40),
+                            (piece.x + 60, piece.y + 40),
+                            (piece.x + 60, piece.y + 20),
                         ],
                     )
-                elif screen[i][j] == "KB2":
+                elif isinstance(piece, Bishop):
+                    pg.draw.rect(
+                        ecran,
+                        black if piece.color == "black" else white,
+                        pg.Rect(piece.x + 30, piece.y + 10, 20, 60),
+                    )
+                elif isinstance(piece, Queen):
                     pg.draw.polygon(
                         ecran,
-                        black,
+                        black if piece.color == "black" else white,
                         [
-                            (KB2.x + 20, KB2.y + 20),
-                            (KB2.x + 20, KB2.y + 60),
-                            (KB2.x + 40, KB2.y + 60),
-                            (KB2.x + 40, KB2.y + 40),
-                            (KB2.x + 60, KB2.y + 40),
-                            (KB2.x + 60, KB2.y + 20),
+                            (piece.x + 20, piece.y + 40),
+                            (piece.x + 40, piece.y + 20),
+                            (piece.x + 60, piece.y + 40),
+                            (piece.x + 40, piece.y + 60),
                         ],
                     )
-                elif screen[i][j] == "BB1":
-                    pg.draw.rect(ecran, black, pg.Rect(BB1.x + 30, BB1.y + 10, 20, 60))
-                elif screen[i][j] == "BB2":
-                    pg.draw.rect(ecran, black, pg.Rect(BB2.x + 30, BB2.y + 10, 20, 60))
-                elif screen[i][j] == "QB":
+                elif isinstance(piece, King):
                     pg.draw.polygon(
                         ecran,
-                        black,
+                        black if piece.color == "black" else white,
                         [
-                            (QB.x + 20, QB.y + 40),
-                            (QB.x + 40, QB.y + 20),
-                            (QB.x + 60, QB.y + 40),
-                            (QB.x + 40, QB.y + 60),
-                        ],
-                    )
-                elif screen[i][j] == "KB":
-                    pg.draw.polygon(
-                        ecran,
-                        black,
-                        [
-                            (KB.x + 30, KB.y + 10),
-                            (KB.x + 50, KB.y + 10),
-                            (KB.x + 50, KB.y + 30),
-                            (KB.x + 70, KB.y + 30),
-                            (KB.x + 70, KB.y + 50),
-                            (KB.x + 50, KB.y + 50),
-                            (KB.x + 50, KB.y + 70),
-                            (KB.x + 30, KB.y + 70),
-                            (KB.x + 30, KB.y + 50),
-                            (KB.x + 10, KB.y + 50),
-                            (KB.x + 10, KB.y + 50),
-                            (KB.x + 10, KB.y + 30),
-                            (KB.x + 30, KB.y + 30),
+                            (piece.x + 30, piece.y + 10),
+                            (piece.x + 50, piece.y + 10),
+                            (piece.x + 50, piece.y + 30),
+                            (piece.x + 70, piece.y + 30),
+                            (piece.x + 70, piece.y + 50),
+                            (piece.x + 50, piece.y + 50),
+                            (piece.x + 50, piece.y + 70),
+                            (piece.x + 30, piece.y + 70),
+                            (piece.x + 30, piece.y + 50),
+                            (piece.x + 10, piece.y + 50),
+                            (piece.x + 10, piece.y + 50),
+                            (piece.x + 10, piece.y + 30),
+                            (piece.x + 30, piece.y + 30),
                         ],
                     )
 
-                if screen[i][j] == "PW1":
-                    pg.draw.circle(ecran, white, (PW1.x + 40, PW1.y + 40), 15)
-                elif screen[i][j] == "PW2":
-                    pg.draw.circle(ecran, white, (PW2.x + 40, PW2.y + 40), 15)
-                elif screen[i][j] == "PW3":
-                    pg.draw.circle(ecran, white, (PW3.x + 40, PW3.y + 40), 15)
-                elif screen[i][j] == "PW4":
-                    pg.draw.circle(ecran, white, (PW4.x + 40, PW4.y + 40), 15)
-                elif screen[i][j] == "PW5":
-                    pg.draw.circle(ecran, white, (PW5.x + 40, PW5.y + 40), 15)
-                elif screen[i][j] == "PW6":
-                    pg.draw.circle(ecran, white, (PW6.x + 40, PW6.y + 40), 15)
-                elif screen[i][j] == "PW7":
-                    pg.draw.circle(ecran, white, (PW7.x + 40, PW7.y + 40), 15)
-                elif screen[i][j] == "PW8":
-                    pg.draw.circle(ecran, white, (PW8.x + 40, PW8.y + 40), 15)
-                elif screen[i][j] == "RW1":
-                    pg.draw.rect(ecran, white, (RW1.x, RW1.y, width, height))
-                elif screen[i][j] == "RW2":
-                    pg.draw.rect(ecran, white, (RW2.x, RW2.y, width, height))
-                elif screen[i][j] == "KW1":
-                    pg.draw.polygon(
-                        ecran,
-                        white,
-                        [
-                            (KW1.x + 20, KW1.y + 20),
-                            (KW1.x + 20, KW1.y + 60),
-                            (KW1.x + 40, KW1.y + 60),
-                            (KW1.x + 40, KW1.y + 40),
-                            (KW1.x + 60, KW1.y + 40),
-                            (KW1.x + 60, KW1.y + 20),
-                        ],
-                    )
-                elif screen[i][j] == "KW2":
-                    pg.draw.polygon(
-                        ecran,
-                        white,
-                        [
-                            (KW2.x + 20, KW2.y + 20),
-                            (KW2.x + 20, KW2.y + 60),
-                            (KW2.x + 40, KW2.y + 60),
-                            (KW2.x + 40, KW2.y + 40),
-                            (KW2.x + 60, KW2.y + 40),
-                            (KW2.x + 60, KW2.y + 20),
-                        ],
-                    )
-                elif screen[i][j] == "BW1":
-                    pg.draw.rect(ecran, white, pg.Rect(BW1.x + 30, BW1.y + 10, 20, 60))
-                elif screen[i][j] == "BW2":
-                    pg.draw.rect(ecran, white, pg.Rect(BW2.x + 30, BW2.y + 10, 20, 60))
-                elif screen[i][j] == "QW":
-                    pg.draw.polygon(
-                        ecran,
-                        white,
-                        [
-                            (QW.x + 20, QB.y + 40),
-                            (QW.x + 40, QW.y + 20),
-                            (QW.x + 60, QW.y + 40),
-                            (QW.x + 40, QW.y + 60),
-                        ],
-                    )
-                elif screen[i][j] == "KW":
-                    pg.draw.polygon(
-                        ecran,
-                        white,
-                        [
-                            (KW.x + 30, KB.y + 10),
-                            (KW.x + 50, KW.y + 10),
-                            (KW.x + 50, KW.y + 30),
-                            (KW.x + 70, KW.y + 30),
-                            (KW.x + 70, KW.y + 50),
-                            (KW.x + 50, KW.y + 50),
-                            (KW.x + 50, KW.y + 70),
-                            (KW.x + 30, KW.y + 70),
-                            (KW.x + 30, KW.y + 50),
-                            (KW.x + 10, KW.y + 50),
-                            (KW.x + 10, KW.y + 50),
-                            (KW.x + 10, KW.y + 30),
-                            (KW.x + 30, KW.y + 30),
-                        ],
-                    )
 
+selected_piece = None
 
 while running:
-    clock.tick(10)
+    clock.tick(0.4)
     for event in pg.event.get():
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_q:
                 running = False
         elif event.type == pg.QUIT:
             running = False
+        elif event.type == pg.MOUSEBUTTONDOWN:
+            if event.button == 0:
+                x, y = event.pos
+                start = [x // width, y // height]
+                if screen[start[0]][start[1]] is not None:
+                    selected_piece = screen[start[0]][start[1]]
+            elif event.button == 2:
+                x, y = event.pos
+                end = [x // width, y // height]
+                if selected_piece is not None and selected_piece.coup_valide(
+                    start, end, screen
+                ):
+                    screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                    screen[start[0]][start[1]] = None
+                selected_piece = None
+
     ecran.fill((255, 255, 255))
     for i in range(8):
         for j in range(8):
             for piece in Pieces:
                 if piece.x == i * width and piece.y == j * height:
                     screen[i][j] = piece
+
     affichage(screen)
+    pg.display.update()
