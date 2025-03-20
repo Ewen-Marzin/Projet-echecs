@@ -1,5 +1,6 @@
 import pygame as pg
 import random as rd
+import numpy as np
 
 pg.init()
 width = 80
@@ -19,9 +20,6 @@ class Piece:
         self.color = color
         self.x = n * width
         self.y = m * height
-
-    def coup_valide(self, start, end, screen):
-        pass
 
 
 class Pawn(Piece):
@@ -118,29 +116,29 @@ class Rock(Piece):
 class Bishop(Piece):
     def coup_valide(self, start, end, screen):
         if (
-            abs(start[0] - end[0]) == abs(start[1] - end[1])
-        ):  ## Pour des déplcements en diagonale, on vérifie que la valeur absolue de la différence d'ordonnée est égale à la valeur absolue de la différence d'abscisse
+            np.abs(start[0] - end[0]) == np.abs(start[1] - end[1])
+        ):  ## Pour des déplcements en diagonale, on vérifie que la valeur absolue de la différence d'ordonnée est égale à la valeur np.absolue de la différence d'np.abscisse
             if (
                 start[0] < end[0] and start[1] < end[1]
             ):  ## On différencie les cas possibles de déplacement selon les 4 diagonales (Haut-Droite, Bas-Droite, Haut-Gauche, Bas-Gauche)
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if (
                         screen[start[0] + i][start[1] + i] is not None
                     ):  ## On vérifie qu'on ne rencontre aucune pièce sur le chemin
                         return False
                 return True
             elif start[0] < end[0] and start[1] > end[1]:
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if screen[start[0] + i][start[1] - i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] < end[1]:
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if screen[start[0] - i][start[1] + i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] > end[1]:
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if screen[start[0] - i][start[1] - i] is not None:
                         return False
                 return True
@@ -150,8 +148,8 @@ class Bishop(Piece):
 
 class Knight(Piece):
     def coup_valide(self, start, end, screen):
-        if (abs(start[0] - end[0]) == 2 and abs(start[1] - end[1]) == 1) or (
-            abs(start[0] - end[0] == 1 and abs(start[1] - end[1]) == 2)
+        if (np.abs(start[0] - end[0]) == 2 and np.abs(start[1] - end[1]) == 1) or (
+            np.abs(start[0] - end[0] == 1 and np.abs(start[1] - end[1]) == 2)
         ):
             return True  ## Le mouvement de L du cavalier correspond à un décalage de 1 case dans une direction et 2 cases dans une autre orthogonale à la 1ere, ce qui est effectivemetn traduit ici
         else:
@@ -160,7 +158,7 @@ class Knight(Piece):
 
 class King(Piece):
     def coup_valide(self, start, end, screen):
-        if abs(start[0] - end[0]) <= 1 and abs(start[1] - end[1]) <= 1:
+        if np.abs(start[0] - end[0]) <= 1 and np.abs(start[1] - end[1]) <= 1:
             return True
         else:
             return False
@@ -169,29 +167,29 @@ class King(Piece):
 class Queen(Piece):
     def coup_valide(self, start, end, screen):
         if (
-            abs(start[0] - end[0]) == abs(start[1] - end[1])
-        ):  ## Pour des déplcements en diagonale, on vérifie que la valeur absolue de la différence d'ordonnée est égale à la valeur absolue de la différence d'abscisse
+            np.abs(start[0] - end[0]) == np.abs(start[1] - end[1])
+        ):  ## Pour des déplcements en diagonale, on vérifie que la valeur np.absolue de la différence d'ordonnée est égale à la valeur np.absolue de la différence d'np.abscisse
             if (
                 start[0] < end[0] and start[1] < end[1]
             ):  ## On différencie les cas possibles de déplacement selon les 4 diagonales (Haut-Droite, Bas-Droite, Haut-Gauche, Bas-Gauche)
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if (
                         screen[start[0] + i][start[1] + i] is not None
                     ):  ## On vérifie qu'on ne rencontre aucune pièce sur le chemin
                         return False
                 return True
             elif start[0] < end[0] and start[1] > end[1]:
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if screen[start[0] + i][start[1] - i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] < end[1]:
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if screen[start[0] - i][start[1] + i] is not None:
                         return False
                 return True
             elif start[0] > end[0] and start[1] > end[1]:
-                for i in range(1, abs(start[0] - end[0])):
+                for i in range(1, np.abs(start[0] - end[0])):
                     if screen[start[0] - i][start[1] - i] is not None:
                         return False
                 return True
@@ -391,20 +389,58 @@ while running:
         elif event.type == pg.QUIT:
             running = False
         elif event.type == pg.MOUSEBUTTONDOWN:
-            if event.button == 0:
-                x, y = event.pos
+            if pg.mouse.get_pressed()[0]:
+                x, y = pg.mouse.get_pos()
                 start = [x // width, y // height]
                 if screen[start[0]][start[1]] is not None:
                     selected_piece = screen[start[0]][start[1]]
-            elif event.button == 2:
-                x, y = event.pos
+            elif pg.mouse.get_pressed()[2]:
+                x, y = pg.mouse.get_pos()
                 end = [x // width, y // height]
-                if selected_piece is not None and selected_piece.coup_valide(
-                    start, end, screen
-                ):
-                    screen[end[0]][end[1]] = screen[start[0]][start[1]]
-                    screen[start[0]][start[1]] = None
-                selected_piece = None
+                if selected_piece is not None:
+                    if isinstance(selected_piece, Pawn) and selected_piece.coup_valide(
+                        start, end, screen
+                    ):
+                        screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                        screen[start[0]][start[1]] = None
+                        selected_piece.x = end[0] * width
+                        selected_piece.y = end[1] * height
+                    if isinstance(selected_piece, Rock) and selected_piece.coup_valide(
+                        start, end, screen
+                    ):
+                        screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                        screen[start[0]][start[1]] = None
+                        selected_piece.x = end[0] * width
+                        selected_piece.y = end[1] * height
+                    if isinstance(
+                        selected_piece, Knight
+                    ) and selected_piece.coup_valide(start, end, screen):
+                        screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                        screen[start[0]][start[1]] = None
+                        selected_piece.x = end[0] * width
+                        selected_piece.y = end[1] * height
+                    if isinstance(
+                        selected_piece, Bishop
+                    ) and selected_piece.coup_valide(start, end, screen):
+                        screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                        screen[start[0]][start[1]] = None
+                        selected_piece.x = end[0] * width
+                        selected_piece.y = end[1] * height
+                    if isinstance(selected_piece, Queen) and selected_piece.coup_valide(
+                        start, end, screen
+                    ):
+                        screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                        screen[start[0]][start[1]] = None
+                        selected_piece.x = end[0] * width
+                        selected_piece.y = end[1] * height
+                    if isinstance(selected_piece, King) and selected_piece.coup_valide(
+                        start, end, screen
+                    ):
+                        screen[end[0]][end[1]] = screen[start[0]][start[1]]
+                        screen[start[0]][start[1]] = None
+                        selected_piece.x = end[0] * width
+                        selected_piece.y = end[1] * height
+            selected_piece = None
 
     ecran.fill((255, 255, 255))
     for i in range(8):
