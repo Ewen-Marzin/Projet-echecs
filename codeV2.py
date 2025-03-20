@@ -381,7 +381,7 @@ def affichage(screen):
 selected_piece = None
 
 while running:
-    clock.tick(1)
+    clock.tick(5)
     for event in pg.event.get():
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_q:
