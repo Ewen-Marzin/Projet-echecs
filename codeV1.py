@@ -44,6 +44,7 @@ positions = {
 }
 black = (0, 0, 0)
 white = (255, 255, 255)
+
 while running:
     clock.tick(10)
     for event in pg.event.get():
